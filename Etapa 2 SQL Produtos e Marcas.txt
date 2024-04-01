@@ -1,0 +1,34 @@
+
+CREATE TABLE Marca (
+    marca_id INT PRIMARY KEY,
+    nome VARCHAR(100),
+    site_oficial VARCHAR(255),
+    telefone VARCHAR(20)
+);
+
+
+INSERT INTO Marca (marca_id, nome, site_oficial, telefone) VALUES
+(1, 'Nike', 'www.nike.com', '1-800-344-6453'),
+(2, 'Adidas', 'www.adidas.com', '1-800-982-9337'),
+(3, 'Puma', 'www.puma.com', '1-800-806-6453');
+
+CREATE TABLE Produto (
+    produto_id INT PRIMARY KEY,
+    nome VARCHAR(100),
+    preco_custo DECIMAL(10, 2),
+    preco_venda DECIMAL(10, 2),
+    data_validade DATE,
+    marca_id INT,
+    FOREIGN KEY (marca_id) REFERENCES Marca(marca_id)
+);
+
+
+INSERT INTO Produto (produto_id, nome, preco_custo, preco_venda, data_validade, marca_id) VALUES
+(1, 'Air Max', 100.00, 200.00, '2024-12-31', 1),
+(2, 'Superstar', 80.00, 150.00, '2024-10-15', 2),
+(3, 'Future Rider', 70.00, 120.00, '2024-11-30', 3),
+(4, 'React', 120.00, 220.00, '2024-09-30', 1),
+(5, 'Suede', 90.00, 160.00, '2024-08-31', 2),
+(6, 'Zoom Fly', 110.00, 210.00, '2024-07-15', 3),
+(7, 'Ultraboost', 95.00, 170.00, '2024-06-30', 1),
+(8, 'RS-X', 75.00, 130.00, '2024-05-31', 2);
