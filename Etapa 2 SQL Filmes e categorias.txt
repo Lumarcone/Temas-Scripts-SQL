@@ -1,0 +1,36 @@
+-- Criação do banco de dados
+CREATE TABLE Categoria (
+    categoria_id INTEGER PRIMARY KEY,
+    nome VARCHAR(100),
+    publico_alvo VARCHAR(50)
+);
+
+
+INSERT INTO Categoria (nome, publico_alvo) VALUES
+(1, 'Adulto'),
+(2, 'Família'),
+(3, 'Adulto');
+
+
+CREATE TABLE Filme (
+    filme_id INTEGER PRIMARY KEY,
+    titulo VARCHAR(255),
+    sinopse TEXT,
+    estudio VARCHAR(100),
+    categoria_id INTEGER,
+    FOREIGN KEY (categoria_id) REFERENCES Categoria(categoria_id)
+);
+
+
+INSERT INTO Filme (titulo, sinopse, estudio, categoria_id) VALUES
+('Matrix', 'Um programador descobre que o mundo em que vive é na verdade uma simulação controlada por máquinas.', 'Warner Bros.', 1),
+('Toy Story', 'Um grupo de brinquedos ganha vida quando os humanos não estão olhando.', 'Pixar Animation Studios', 2),
+('Forrest Gump', 'A história de um homem simples que testemunha e influencia eventos históricos significativos nos Estados Unidos.', 'Paramount Pictures', 3),
+('Vingadores: Ultimato', 'Os super-heróis restantes se reúnem para reverter os efeitos do estalo de dedos de Thanos.', 'Marvel Studios', 1),
+('Pulp Fiction', 'Uma série de histórias interligadas que giram em torno de personagens do submundo.', 'Miramax Films', 3),
+('Jurassic Park', 'Um parque temático de dinossauros se transforma em uma luta pela sobrevivência quando os dinossauros escapam de seus recintos.', 'Universal Pictures', 1),
+('Harry Potter e a Pedra Filosofal', 'Um jovem bruxo descobre sua verdadeira identidade e começa sua jornada na escola de magia de Hogwarts.', 'Warner Bros.', 2),
+('O Senhor dos Anéis: A Sociedade do Anel', 'Um grupo de seres de diferentes raças se une para destruir um anel que pode trazer a destruição ao mundo.', 'New Line Cinema', 1);
+
+
+SELECT *FROM Filme;
